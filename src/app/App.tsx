@@ -10,7 +10,7 @@ const SPELTAKKEN = [
     id: "bevers",
     name: "Bevers",
     age: "4–6 jaar",
-    color: "#E30613",
+    color: "#FF0000",
     description:
       "De allerkleinsten! Bevers ontdekken de wereld spelenderwijs in een veilige, warme groepje vol plezier.",
     activities: ["Bouwen", "Zingen", "Knutselen", "Spelletjes", "Natuur ontdekken"],
@@ -20,7 +20,7 @@ const SPELTAKKEN = [
     id: "welpen",
     name: "Welpen",
     age: "7–10 jaar",
-    color: "#FFDD00",
+    color: "#FFFF00",
     textColor: "#1a1a1a",
     description:
       "Welpen gaan op avontuur, leren samenwerken en ontdekken wat ze allemaal kunnen.",
@@ -31,7 +31,7 @@ const SPELTAKKEN = [
     id: "scouts",
     name: "Scouts",
     age: "11–14 jaar",
-    color: "#008037",
+    color: "#31A529",
     description:
       "Scouts leren zelfstandigheid en teamwerk in de natuur. Groot avontuur, echte vaardigheden.",
     activities: ["Trekken", "Bivakken", "Eerste hulp", "Navigeren", "Avontuur"],
@@ -41,7 +41,7 @@ const SPELTAKKEN = [
     id: "explorers",
     name: "Explorers",
     age: "15–17 jaar",
-    color: "#003580",
+    color: "#1A368D",
     description:
       "Explorers nemen het heft in eigen handen en organiseren hun eigen activiteiten en expedities.",
     activities: ["Expedities", "Projecten", "Vrijwilligerswerk", "Leiderschap", "Reizen"],
@@ -99,13 +99,13 @@ const NIEUWS = [
 ];
 
 const AGENDA = [
-  { id: 1, dag: "Zat", datum: "5 jul", titel: "Bevers — Zomerspelen", locatie: "Scoutingterrein", tak: "Bevers", color: "#E30613" },
-  { id: 2, dag: "Zat", datum: "12 jul", titel: "Welpen — Kampvuur avond", locatie: "Scoutingterrein", tak: "Welpen", color: "#FFDD00" },
-  { id: 3, dag: "Zat", datum: "19 jul", titel: "Scouts — Dagtocht Veluwe", locatie: "Veluwe", tak: "Scouts", color: "#008037" },
-  { id: 4, dag: "Za", datum: "2 aug", titel: "Zomerkamp 2025 (start)", locatie: "Ardennen, België", tak: "Alle takken", color: "#003580" },
-  { id: 5, dag: "Za", datum: "9 aug", titel: "Zomerkamp 2025 (einde)", locatie: "Ardennen, België", tak: "Alle takken", color: "#003580" },
-  { id: 6, dag: "Zat", datum: "6 sep", titel: "Eerste bijeenkomst nieuw seizoen", locatie: "Scoutingterrein", tak: "Alle takken", color: "#E30613" },
-  { id: 7, dag: "Zat", datum: "20 sep", titel: "Explorers — Nighthike", locatie: "Nationaal Park", tak: "Explorers", color: "#003580" },
+  { id: 1, dag: "Zat", datum: "5 jul", titel: "Bevers — Zomerspelen", locatie: "Scoutingterrein", tak: "Bevers", color: "#FF0000" },
+  { id: 2, dag: "Zat", datum: "12 jul", titel: "Welpen — Kampvuur avond", locatie: "Scoutingterrein", tak: "Welpen", color: "#FFFF00" },
+  { id: 3, dag: "Zat", datum: "19 jul", titel: "Scouts — Dagtocht Veluwe", locatie: "Veluwe", tak: "Scouts", color: "#31A529" },
+  { id: 4, dag: "Za", datum: "2 aug", titel: "Zomerkamp 2025 (start)", locatie: "Ardennen, België", tak: "Alle takken", color: "#1A368D" },
+  { id: 5, dag: "Za", datum: "9 aug", titel: "Zomerkamp 2025 (einde)", locatie: "Ardennen, België", tak: "Alle takken", color: "#1A368D" },
+  { id: 6, dag: "Zat", datum: "6 sep", titel: "Eerste bijeenkomst nieuw seizoen", locatie: "Scoutingterrein", tak: "Alle takken", color: "#FF0000" },
+  { id: 7, dag: "Zat", datum: "20 sep", titel: "Explorers — Nighthike", locatie: "Nationaal Park", tak: "Explorers", color: "#1A368D" },
   { id: 8, dag: "Zat", datum: "11 okt", titel: "Ouderavond", locatie: "Clubhuis", tak: "Alle takken", color: "#4A2E19" },
 ];
 
@@ -146,6 +146,8 @@ function unsplash(id: string, w: number, h: number) {
   return `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format`;
 }
 
+const LOGO_SRC = "/src/imports/Scouting_NL_logo_RGB_transparanteachtergrond.png";
+
 // ─── Navbar ──────────────────────────────────────────────────────────────────
 
 function Navbar({ current, go }: { current: Page; go: (p: Page) => void }) {
@@ -167,13 +169,13 @@ function Navbar({ current, go }: { current: Page; go: (p: Page) => void }) {
       className="fixed top-0 left-0 right-0 z-50 bg-white"
       style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20 sm:h-24">
         {/* Logo */}
-        <button onClick={() => nav("home")} className="shrink-0">
+        <button onClick={() => nav("home")} className="shrink-0 rounded-xl bg-white border border-black/5 px-2 py-1">
           <img
-            src="/src/imports/Scouting_NL_logo_RGB_transparanteachtergrond.png"
+            src={LOGO_SRC}
             alt="Scouting Nederland"
-            className="h-10 w-auto"
+            className="h-14 sm:h-16 w-auto object-contain"
           />
         </button>
 
@@ -184,20 +186,20 @@ function Navbar({ current, go }: { current: Page; go: (p: Page) => void }) {
               key={l.page}
               onClick={() => nav(l.page)}
               className="text-sm font-bold transition-colors"
-              style={{ color: current === l.page ? "#E30613" : "#1a1a1a" }}
+              style={{ color: current === l.page ? "#FF0000" : "#1a1a1a" }}
             >
               {l.label}
             </button>
           ))}
           <button
             onClick={() => nav("aanmelden")}
-            className="bg-[#E30613] text-white font-bold text-sm px-4 py-2 rounded-full hover:bg-[#c0050f] transition-colors"
+            className="bg-[#FF0000] text-white font-bold text-sm px-4 py-2 rounded-full hover:bg-[#c0050f] transition-colors"
           >
             Aanmelden
           </button>
           <button
             onClick={() => nav("sollicitatie")}
-            className="border-2 border-[#003580] text-[#003580] font-bold text-sm px-4 py-2 rounded-full hover:bg-[#003580] hover:text-white transition-colors"
+            className="border-2 border-[#1A368D] text-[#1A368D] font-bold text-sm px-4 py-2 rounded-full hover:bg-[#1A368D] hover:text-white transition-colors"
           >
             Word begeleider
           </button>
@@ -212,13 +214,13 @@ function Navbar({ current, go }: { current: Page; go: (p: Page) => void }) {
       {open && (
         <div className="md:hidden bg-white border-t border-[#f0f0f0] px-4 py-4 flex flex-col gap-2">
           {links.map((l) => (
-            <button key={l.page} onClick={() => nav(l.page)} className="text-left font-bold py-2 text-[#1a1a1a] hover:text-[#E30613]">
+            <button key={l.page} onClick={() => nav(l.page)} className="text-left font-bold py-2 text-[#1a1a1a] hover:text-[#FF0000]">
               {l.label}
             </button>
           ))}
           <div className="pt-2 flex flex-col gap-2">
-            <button onClick={() => nav("aanmelden")} className="bg-[#E30613] text-white font-bold py-3 rounded-full">Aanmelden</button>
-            <button onClick={() => nav("sollicitatie")} className="border-2 border-[#003580] text-[#003580] font-bold py-3 rounded-full">Word begeleider</button>
+            <button onClick={() => nav("aanmelden")} className="bg-[#FF0000] text-white font-bold py-3 rounded-full">Aanmelden</button>
+            <button onClick={() => nav("sollicitatie")} className="border-2 border-[#1A368D] text-[#1A368D] font-bold py-3 rounded-full">Word begeleider</button>
           </div>
         </div>
       )}
@@ -234,18 +236,20 @@ function Footer({ go }: { go: (p: Page) => void }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <img
-              src="/src/imports/Scouting_NL_logo_RGB_transparanteachtergrond.png"
-              alt="Scouting"
-              className="h-12 w-auto mb-4 brightness-0 invert"
-            />
+            <div className="inline-flex items-center bg-white rounded-xl px-3 py-2 mb-4">
+              <img
+                src={LOGO_SRC}
+                alt="Scouting Nederland"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             <p className="text-white/50 text-sm leading-relaxed">
               Avontuur, vriendschap en groei — voor iedereen van 4 tot 20 jaar.
             </p>
           </div>
 
           <div>
-            <div className="text-[#FFDD00] font-bold mb-4 text-sm uppercase tracking-wider">Speltakken</div>
+            <div className="text-[#FFFF00] font-bold mb-4 text-sm uppercase tracking-wider">Speltakken</div>
             {SPELTAKKEN.map((s) => (
               <button key={s.id} onClick={() => go("speltakken")} className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
                 {s.name}
@@ -254,7 +258,7 @@ function Footer({ go }: { go: (p: Page) => void }) {
           </div>
 
           <div>
-            <div className="text-[#FFDD00] font-bold mb-4 text-sm uppercase tracking-wider">Organisatie</div>
+            <div className="text-[#FFFF00] font-bold mb-4 text-sm uppercase tracking-wider">Organisatie</div>
             {(["over-ons", "nieuws", "agenda", "contact"] as Page[]).map((p) => (
               <button key={p} onClick={() => go(p)} className="block text-white/60 hover:text-white text-sm py-1 capitalize transition-colors">
                 {p.replace("-", " ")}
@@ -263,7 +267,7 @@ function Footer({ go }: { go: (p: Page) => void }) {
           </div>
 
           <div>
-            <div className="text-[#FFDD00] font-bold mb-4 text-sm uppercase tracking-wider">Meedoen</div>
+            <div className="text-[#FFFF00] font-bold mb-4 text-sm uppercase tracking-wider">Meedoen</div>
             <button onClick={() => go("aanmelden")} className="block text-white/60 hover:text-white text-sm py-1 transition-colors">Aanmelden als lid</button>
             <button onClick={() => go("sollicitatie")} className="block text-white/60 hover:text-white text-sm py-1 transition-colors">Word begeleider</button>
           </div>
@@ -289,19 +293,19 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       {/* Hero */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #E30613 0%, #b0040f 45%, #003580 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FF0000 0%, #b0040f 45%, #1A368D 100%)" }}
       >
         <img
           src={unsplash("1504280390367-361c6d9f38f4", 1600, 900)}
           alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <div className="absolute top-0 right-0 w-[520px] h-[520px] rounded-full opacity-15" style={{ background: "#FFDD00", transform: "translate(25%, -35%)" }} />
-        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-10" style={{ background: "#008037", transform: "translate(-30%, 35%)" }} />
+        <div className="absolute top-0 right-0 w-[520px] h-[520px] rounded-full opacity-15" style={{ background: "#FFFF00", transform: "translate(25%, -35%)" }} />
+        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-10" style={{ background: "#31A529", transform: "translate(-30%, 35%)" }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-36 text-white">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-[#FFDD00] text-[#1a1a1a] font-bold px-4 py-1.5 rounded-full text-sm mb-8">
+            <div className="inline-flex items-center gap-2 bg-[#FFFF00] text-[#1a1a1a] font-bold px-4 py-1.5 rounded-full text-sm mb-8">
               🏕️ Scouting Nederland
             </div>
             <h1 className="text-6xl md:text-8xl font-black leading-none tracking-tight mb-6">
@@ -313,7 +317,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => go("aanmelden")}
-                className="inline-flex items-center gap-2 bg-[#FFDD00] text-[#1a1a1a] font-extrabold px-8 py-4 rounded-full text-lg hover:scale-105 transition-transform"
+                className="inline-flex items-center gap-2 bg-[#FFFF00] text-[#1a1a1a] font-extrabold px-8 py-4 rounded-full text-lg hover:scale-105 transition-transform"
               >
                 Meld je aan <ArrowRight size={20} />
               </button>
@@ -334,7 +338,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#003580] py-10">
+      <section className="bg-[#1A368D] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { num: "180+", label: "leden" },
@@ -343,7 +347,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
             { num: "5", label: "speltakken" },
           ].map((s) => (
             <div key={s.label}>
-              <div className="text-4xl font-black text-[#FFDD00]">{s.num}</div>
+              <div className="text-4xl font-black text-[#FFFF00]">{s.num}</div>
               <div className="text-sm text-white/60 mt-1">{s.label}</div>
             </div>
           ))}
@@ -378,7 +382,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <button onClick={() => go("speltakken")} className="inline-flex items-center gap-2 font-bold text-[#E30613] hover:gap-4 transition-all text-sm">
+            <button onClick={() => go("speltakken")} className="inline-flex items-center gap-2 font-bold text-[#FF0000] hover:gap-4 transition-all text-sm">
               Meer over speltakken <ArrowRight size={16} />
             </button>
           </div>
@@ -393,7 +397,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
               <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a]">Laatste nieuws</h2>
               <p className="text-[#666] mt-2 text-lg">Blijf op de hoogte</p>
             </div>
-            <button onClick={() => go("nieuws")} className="hidden md:inline-flex items-center gap-2 font-bold text-[#E30613] hover:gap-4 transition-all text-sm">
+            <button onClick={() => go("nieuws")} className="hidden md:inline-flex items-center gap-2 font-bold text-[#FF0000] hover:gap-4 transition-all text-sm">
               Alle nieuws <ArrowRight size={16} />
             </button>
           </div>
@@ -404,7 +408,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
                   <img src={unsplash(n.img, 600, 338)} alt={n.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
-                  <span className="inline-block bg-[#E30613]/10 text-[#E30613] font-bold text-xs px-3 py-1 rounded-full mb-3">{n.category}</span>
+                  <span className="inline-block bg-[#FF0000]/10 text-[#FF0000] font-bold text-xs px-3 py-1 rounded-full mb-3">{n.category}</span>
                   <h3 className="font-extrabold text-[#1a1a1a] text-base leading-snug mb-2">{n.title}</h3>
                   <p className="text-[#666] text-sm line-clamp-2">{n.excerpt}</p>
                   <div className="mt-4 text-xs text-[#aaa]">{n.date}</div>
@@ -416,11 +420,11 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* CTA begeleider */}
-      <section className="py-24 bg-[#003580] text-white relative overflow-hidden">
+      <section className="py-24 bg-[#1A368D] text-white relative overflow-hidden">
         <img src={unsplash("1529156069898-49953e39b3ac", 1400, 500)} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-10">
           <div>
-            <div className="text-[#FFDD00] font-bold text-sm mb-2 uppercase tracking-wider">🌟 Vrijwilliger worden</div>
+            <div className="text-[#FFFF00] font-bold text-sm mb-2 uppercase tracking-wider">🌟 Vrijwilliger worden</div>
             <h2 className="text-4xl md:text-5xl font-black">Word begeleider!</h2>
             <p className="text-white/65 mt-4 max-w-xl text-lg leading-relaxed">
               Heb jij passie voor avontuur en wil je het verschil maken in het leven van kinderen? Sluit je aan bij ons team.
@@ -428,7 +432,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
           </div>
           <button
             onClick={() => go("sollicitatie")}
-            className="shrink-0 bg-[#FFDD00] text-[#1a1a1a] font-extrabold px-10 py-5 rounded-full text-xl hover:scale-105 transition-transform"
+            className="shrink-0 bg-[#FFFF00] text-[#1a1a1a] font-extrabold px-10 py-5 rounded-full text-xl hover:scale-105 transition-transform"
           >
             Solliciteer nu
           </button>
@@ -442,16 +446,16 @@ function HomePage({ go }: { go: (p: Page) => void }) {
             <div>
               <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a]">Aankomende activiteiten</h2>
             </div>
-            <button onClick={() => go("agenda")} className="hidden md:inline-flex items-center gap-2 font-bold text-[#E30613] hover:gap-4 transition-all text-sm">
+            <button onClick={() => go("agenda")} className="hidden md:inline-flex items-center gap-2 font-bold text-[#FF0000] hover:gap-4 transition-all text-sm">
               Volledige agenda <ArrowRight size={16} />
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {AGENDA.slice(0, 4).map((e) => (
-              <div key={e.id} className="flex items-center gap-4 p-4 border-2 border-[#f0f0f0] rounded-xl hover:border-[#E30613] transition-colors">
+              <div key={e.id} className="flex items-center gap-4 p-4 border-2 border-[#f0f0f0] rounded-xl hover:border-[#FF0000] transition-colors">
                 <div
                   className="shrink-0 w-14 h-14 rounded-xl flex flex-col items-center justify-center text-white font-bold text-xs"
-                  style={{ background: e.color, color: e.color === "#FFDD00" ? "#1a1a1a" : "white" }}
+                  style={{ background: e.color, color: e.color === "#FFFF00" ? "#1a1a1a" : "white" }}
                 >
                   <span className="opacity-75">{e.dag}</span>
                   <span className="text-lg leading-tight font-extrabold">{e.datum.split(" ")[0]}</span>
@@ -477,7 +481,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
 function OverOnsPage() {
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#003580] text-white relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-[#1A368D] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img src={unsplash("1533577716844-fd82a37fe68a", 1400, 500)} alt="" className="w-full h-full object-cover" />
         </div>
@@ -507,7 +511,7 @@ function OverOnsPage() {
                 { label: "Seizoenen", value: "75+" },
               ].map((s) => (
                 <div key={s.label} className="p-4 rounded-xl bg-[#f8f8f8]">
-                  <div className="text-2xl font-black text-[#E30613]">{s.value}</div>
+                  <div className="text-2xl font-black text-[#FF0000]">{s.value}</div>
                   <div className="text-sm text-[#666]">{s.label}</div>
                 </div>
               ))}
@@ -548,7 +552,7 @@ function OverOnsPage() {
 function SpeltakkenPage() {
   const [active, setActive] = useState(0);
   const s = SPELTAKKEN[active];
-  const textOnColor = s.color === "#FFDD00" ? "#1a1a1a" : "white";
+  const textOnColor = s.color === "#FFFF00" ? "#1a1a1a" : "white";
 
   return (
     <div>
@@ -619,7 +623,7 @@ function SpeltakkenPage() {
 function NieuwsPage() {
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#E30613] text-white">
+      <section className="pt-32 pb-20 bg-[#FF0000] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black">Nieuws</h1>
           <p className="text-white/65 mt-4 text-xl">Blijf op de hoogte van alles bij Scouting</p>
@@ -635,12 +639,12 @@ function NieuwsPage() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="inline-block bg-[#E30613]/10 text-[#E30613] font-bold text-xs px-3 py-1 rounded-full">{n.category}</span>
+                  <span className="inline-block bg-[#FF0000]/10 text-[#FF0000] font-bold text-xs px-3 py-1 rounded-full">{n.category}</span>
                   <span className="text-xs text-[#aaa]">{n.date}</span>
                 </div>
                 <h2 className="font-extrabold text-[#1a1a1a] text-base leading-snug mb-2">{n.title}</h2>
                 <p className="text-[#666] text-sm leading-relaxed">{n.excerpt}</p>
-                <button className="mt-4 inline-flex items-center gap-1 font-bold text-[#E30613] text-sm hover:gap-3 transition-all">
+                <button className="mt-4 inline-flex items-center gap-1 font-bold text-[#FF0000] text-sm hover:gap-3 transition-all">
                   Lees meer <ArrowRight size={14} />
                 </button>
               </div>
@@ -657,7 +661,7 @@ function NieuwsPage() {
 function AgendaPage() {
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#008037] text-white">
+      <section className="pt-32 pb-20 bg-[#31A529] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black">Agenda</h1>
           <p className="text-white/65 mt-4 text-xl">Alle aankomende activiteiten op een rij</p>
@@ -668,11 +672,11 @@ function AgendaPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="space-y-3">
             {AGENDA.map((e) => {
-              const textCol = e.color === "#FFDD00" ? "#1a1a1a" : "white";
+              const textCol = e.color === "#FFFF00" ? "#1a1a1a" : "white";
               return (
                 <div
                   key={e.id}
-                  className="group flex items-center gap-4 p-4 border-2 border-[#f0f0f0] rounded-2xl hover:border-[#E30613] transition-all bg-white hover:shadow-md cursor-pointer"
+                  className="group flex items-center gap-4 p-4 border-2 border-[#f0f0f0] rounded-2xl hover:border-[#FF0000] transition-all bg-white hover:shadow-md cursor-pointer"
                 >
                   <div
                     className="shrink-0 w-16 h-16 rounded-xl flex flex-col items-center justify-center font-bold text-xs"
@@ -689,7 +693,7 @@ function AgendaPage() {
                       <span className="flex items-center gap-1"><Users size={11} /> {e.tak}</span>
                     </div>
                   </div>
-                  <button className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[#E30613] text-white font-bold text-xs px-3 py-2 rounded-lg">
+                  <button className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[#FF0000] text-white font-bold text-xs px-3 py-2 rounded-lg">
                     Details
                   </button>
                 </div>
@@ -714,11 +718,11 @@ function AanmeldenPage() {
   const upd = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
   const selectedTak = SPELTAKKEN.find((s) => s.id === form.speltaktak);
 
-  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#E30613] outline-none transition-colors text-[#1a1a1a] text-sm";
+  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#FF0000] outline-none transition-colors text-[#1a1a1a] text-sm";
 
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#FFDD00]">
+      <section className="pt-32 pb-20 bg-[#FFFF00]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black text-[#1a1a1a]">Aanmelden</h1>
           <p className="text-[#1a1a1a]/60 mt-4 text-xl">Word lid van Scouting Nederland</p>
@@ -733,12 +737,12 @@ function AanmeldenPage() {
               <div key={n} className="flex items-center gap-2 flex-1 last:flex-none">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0 transition-colors"
-                  style={step >= n ? { background: "#E30613", color: "white" } : { background: "#e0e0e0", color: "#aaa" }}
+                  style={step >= n ? { background: "#FF0000", color: "white" } : { background: "#e0e0e0", color: "#aaa" }}
                 >
                   {step > n ? <Check size={16} /> : n}
                 </div>
                 {n < 3 && (
-                  <div className="h-1 flex-1 rounded transition-colors" style={{ background: step > n ? "#E30613" : "#e0e0e0" }} />
+                  <div className="h-1 flex-1 rounded transition-colors" style={{ background: step > n ? "#FF0000" : "#e0e0e0" }} />
                 )}
               </div>
             ))}
@@ -773,7 +777,7 @@ function AanmeldenPage() {
                     <input type="email" value={form.email} onChange={(e) => upd("email", e.target.value)} className={inputCls} />
                   </div>
                 </div>
-                <button onClick={() => setStep(2)} className="mt-6 w-full bg-[#E30613] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
+                <button onClick={() => setStep(2)} className="mt-6 w-full bg-[#FF0000] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
                   Volgende →
                 </button>
               </div>
@@ -790,14 +794,14 @@ function AanmeldenPage() {
                         key={s.id}
                         onClick={() => upd("speltaktak", s.id)}
                         className="w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-left"
-                        style={{ borderColor: sel ? "#E30613" : "#e0e0e0", background: sel ? "#fef0f0" : "white" }}
+                        style={{ borderColor: sel ? "#FF0000" : "#e0e0e0", background: sel ? "#fef0f0" : "white" }}
                       >
                         <div className="w-8 h-8 rounded-lg shrink-0" style={{ background: s.color }} />
                         <div className="flex-1">
                           <div className="font-bold text-[#1a1a1a] text-sm">{s.name}</div>
                           <div className="text-xs text-[#666]">{s.age}</div>
                         </div>
-                        {sel && <Check size={18} className="text-[#E30613]" />}
+                        {sel && <Check size={18} className="text-[#FF0000]" />}
                       </button>
                     );
                   })}
@@ -823,14 +827,14 @@ function AanmeldenPage() {
 
                 <div className="flex gap-3 mt-6">
                   <button onClick={() => setStep(1)} className="flex-1 border-2 border-[#e0e0e0] text-[#666] font-bold py-4 rounded-xl hover:border-[#ccc] transition-colors">← Terug</button>
-                  <button onClick={() => setStep(3)} className="flex-1 bg-[#E30613] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">Volgende →</button>
+                  <button onClick={() => setStep(3)} className="flex-1 bg-[#FF0000] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">Volgende →</button>
                 </div>
               </div>
             )}
 
             {step === 3 && (
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#008037] rounded-full flex items-center justify-center mx-auto mb-5">
+                <div className="w-16 h-16 bg-[#31A529] rounded-full flex items-center justify-center mx-auto mb-5">
                   <Check size={32} className="text-white" />
                 </div>
                 <h2 className="text-2xl font-black text-[#1a1a1a] mb-2">Bijna klaar!</h2>
@@ -843,7 +847,7 @@ function AanmeldenPage() {
                 </div>
                 <div className="flex gap-3">
                   <button onClick={() => setStep(2)} className="flex-1 border-2 border-[#e0e0e0] text-[#666] font-bold py-4 rounded-xl">← Terug</button>
-                  <button className="flex-1 bg-[#E30613] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
+                  <button className="flex-1 bg-[#FF0000] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
                     Aanmelding versturen 🎉
                   </button>
                 </div>
@@ -876,7 +880,7 @@ function SollicitatiePage() {
   const TOTAL = 5;
   const stepLabels = ["Profiel", "Vaardigheden", "Certificaten", "Beschikbaar", "Motivatie"];
 
-  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#003580] outline-none transition-colors text-[#1a1a1a] text-sm";
+  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#1A368D] outline-none transition-colors text-[#1a1a1a] text-sm";
 
   const SkillRow = ({ skill }: { skill: string }) => {
     const v = skills[skill] || 0;
@@ -892,7 +896,7 @@ function SollicitatiePage() {
               className="w-7 h-7 rounded-full text-xs font-bold transition-all"
               style={
                 v >= n
-                  ? { background: "#E30613", color: "white", transform: "scale(1.1)" }
+                  ? { background: "#FF0000", color: "white", transform: "scale(1.1)" }
                   : { background: "#f0f0f0", color: "#ccc" }
               }
             >
@@ -906,10 +910,10 @@ function SollicitatiePage() {
 
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#003580] text-white relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-[#1A368D] text-white relative overflow-hidden">
         <img src={unsplash("1526976668912-1a811878dd37", 1400, 500)} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="inline-block bg-[#FFDD00] text-[#1a1a1a] font-bold px-4 py-1.5 rounded-full text-xs mb-4 uppercase tracking-wider">
+          <div className="inline-block bg-[#FFFF00] text-[#1a1a1a] font-bold px-4 py-1.5 rounded-full text-xs mb-4 uppercase tracking-wider">
             Vrijwilliger worden
           </div>
           <h1 className="text-5xl md:text-7xl font-black">Word begeleider</h1>
@@ -929,7 +933,7 @@ function SollicitatiePage() {
             </div>
             <div className="h-2 bg-[#e0e0e0] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#E30613] rounded-full transition-all duration-500"
+                className="h-full bg-[#FF0000] rounded-full transition-all duration-500"
                 style={{ width: `${(step / TOTAL) * 100}%` }}
               />
             </div>
@@ -938,7 +942,7 @@ function SollicitatiePage() {
                 <span
                   key={l}
                   className="text-xs font-bold"
-                  style={{ color: step === i + 1 ? "#E30613" : step > i + 1 ? "#008037" : "#ccc" }}
+                  style={{ color: step === i + 1 ? "#FF0000" : step > i + 1 ? "#31A529" : "#ccc" }}
                 >
                   {l}
                 </span>
@@ -1028,7 +1032,7 @@ function SollicitatiePage() {
                         className="px-4 py-2 rounded-full border-2 font-semibold text-sm transition-all"
                         style={
                           sel
-                            ? { borderColor: "#008037", background: "#008037", color: "white" }
+                            ? { borderColor: "#31A529", background: "#31A529", color: "white" }
                             : { borderColor: "#e0e0e0", color: "#555" }
                         }
                       >
@@ -1038,11 +1042,11 @@ function SollicitatiePage() {
                   })}
                 </div>
                 {certs.length > 0 && (
-                  <div className="p-4 bg-[#008037]/10 rounded-xl">
-                    <div className="font-bold text-[#008037] text-xs mb-2 uppercase tracking-wider">Geselecteerd ({certs.length})</div>
+                  <div className="p-4 bg-[#31A529]/10 rounded-xl">
+                    <div className="font-bold text-[#31A529] text-xs mb-2 uppercase tracking-wider">Geselecteerd ({certs.length})</div>
                     <div className="flex flex-wrap gap-1.5">
                       {certs.map((c) => (
-                        <span key={c} className="text-xs bg-[#008037] text-white px-2.5 py-1 rounded-full">{c}</span>
+                        <span key={c} className="text-xs bg-[#31A529] text-white px-2.5 py-1 rounded-full">{c}</span>
                       ))}
                     </div>
                   </div>
@@ -1065,11 +1069,11 @@ function SollicitatiePage() {
                         className="p-4 rounded-xl border-2 text-left transition-all"
                         style={
                           sel
-                            ? { borderColor: "#003580", background: "#003580" + "0d" }
+                            ? { borderColor: "#1A368D", background: "#1A368D" + "0d" }
                             : { borderColor: "#e0e0e0" }
                         }
                       >
-                        <div className="font-semibold text-sm" style={{ color: sel ? "#003580" : "#444" }}>
+                        <div className="font-semibold text-sm" style={{ color: sel ? "#1A368D" : "#444" }}>
                           {sel ? "✓ " : ""}{b}
                         </div>
                       </button>
@@ -1122,11 +1126,11 @@ function SollicitatiePage() {
                 </button>
               )}
               {step < TOTAL ? (
-                <button onClick={() => setStep((s) => s + 1)} className="flex-1 bg-[#003580] text-white font-bold py-4 rounded-xl hover:bg-[#002570] transition-colors">
+                <button onClick={() => setStep((s) => s + 1)} className="flex-1 bg-[#1A368D] text-white font-bold py-4 rounded-xl hover:bg-[#002570] transition-colors">
                   Volgende →
                 </button>
               ) : (
-                <button className="flex-1 bg-[#E30613] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors flex items-center justify-center gap-2">
+                <button className="flex-1 bg-[#FF0000] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors flex items-center justify-center gap-2">
                   Sollicitatie versturen 🎉
                 </button>
               )}
@@ -1141,7 +1145,7 @@ function SollicitatiePage() {
 // ─── Page: Contact ───────────────────────────────────────────────────────────
 
 function ContactPage() {
-  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#E30613] outline-none transition-colors text-[#1a1a1a] text-sm";
+  const inputCls = "w-full border-2 border-[#e0e0e0] rounded-xl px-4 py-3 focus:border-[#FF0000] outline-none transition-colors text-[#1a1a1a] text-sm";
 
   return (
     <div>
@@ -1162,8 +1166,8 @@ function ContactPage() {
                 { icon: <Phone size={18} />, label: "Telefoon", value: "020 – 123 45 67" },
                 { icon: <Mail size={18} />, label: "E-mail", value: "info@scouting-amsterdam.nl" },
               ].map((c) => (
-                <div key={c.label} className="flex items-center gap-4 p-4 rounded-xl border-2 border-[#f0f0f0] hover:border-[#E30613] transition-colors">
-                  <div className="w-10 h-10 bg-[#E30613]/10 text-[#E30613] rounded-lg flex items-center justify-center shrink-0">{c.icon}</div>
+                <div key={c.label} className="flex items-center gap-4 p-4 rounded-xl border-2 border-[#f0f0f0] hover:border-[#FF0000] transition-colors">
+                  <div className="w-10 h-10 bg-[#FF0000]/10 text-[#FF0000] rounded-lg flex items-center justify-center shrink-0">{c.icon}</div>
                   <div>
                     <div className="text-xs text-[#aaa] font-bold uppercase tracking-wider">{c.label}</div>
                     <div className="font-semibold text-[#1a1a1a] text-sm">{c.value}</div>
@@ -1206,7 +1210,7 @@ function ContactPage() {
                 <label className="block text-xs font-bold text-[#555] mb-1">Bericht</label>
                 <textarea rows={6} className={inputCls + " resize-none"} />
               </div>
-              <button className="w-full bg-[#E30613] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
+              <button className="w-full bg-[#FF0000] text-white font-bold py-4 rounded-xl hover:bg-[#c0050f] transition-colors">
                 Verstuur bericht
               </button>
             </div>
@@ -1249,3 +1253,4 @@ export default function App() {
     </div>
   );
 }
+

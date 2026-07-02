@@ -1,1 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+body {
+	font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Impact, Arial Black, Arial, sans-serif;
+	letter-spacing: 0.01em;
+}
