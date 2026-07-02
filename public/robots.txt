@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://scouting-nl.vercel.app/sitemap.xml
