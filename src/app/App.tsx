@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight, MapPin, Phone, Mail, Users, Check, ChevronDown } from "lucide-react";
+import aardeBg from "../imports/aarde.jpg";
+import bladBg from "../imports/blad.jpg";
+import houtBg from "../imports/hout.jpg";
+import meerBg from "../imports/meer.jpg";
+import steenBg from "../imports/steen.jpg";
 
 type Page = "home" | "over-ons" | "speltakken" | "nieuws" | "agenda" | "aanmelden" | "sollicitatie" | "contact";
 
@@ -144,6 +149,10 @@ const BESCHIKBAAR_OPT = ["Zaterdagochtend", "Zaterdagmiddag", "Zondagochtend", "
 
 function unsplash(id: string, w: number, h: number) {
   return `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format`;
+}
+
+function BgImage({ src, opacity = 0.12 }: { src: string; opacity?: number }) {
+  return <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" style={{ opacity }} />;
 }
 
 const LOGO_SRC = "/src/imports/Scouting_NL_logo_RGB_transparanteachtergrond.png";
@@ -295,11 +304,7 @@ function HomePage({ go }: { go: (p: Page) => void }) {
         className="relative min-h-screen flex items-center overflow-hidden"
         style={{ background: "linear-gradient(135deg, #FF0000 0%, #b0040f 45%, #1A368D 100%)" }}
       >
-        <img
-          src={unsplash("1504280390367-361c6d9f38f4", 1600, 900)}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        />
+        <BgImage src={meerBg} opacity={0.18} />
         <div className="absolute top-0 right-0 w-[520px] h-[520px] rounded-full opacity-15" style={{ background: "#FFFF00", transform: "translate(25%, -35%)" }} />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-10" style={{ background: "#31A529", transform: "translate(-30%, 35%)" }} />
 
@@ -338,12 +343,13 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#1A368D] py-10">
+      <section className="relative bg-[#1A368D] py-10 overflow-hidden">
+        <BgImage src={aardeBg} opacity={0.09} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { num: "180+", label: "leden" },
             { num: "25+", label: "begeleiders" },
-            { num: "1947", label: "opgericht" },
+            { num: "2010", label: "opgericht" },
             { num: "5", label: "speltakken" },
           ].map((s) => (
             <div key={s.label}>
@@ -355,7 +361,8 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* Speltakken */}
-      <section className="py-24 bg-white">
+      <section className="relative py-24 bg-white overflow-hidden">
+        <BgImage src={houtBg} opacity={0.08} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a]">Onze speltakken</h2>
@@ -390,7 +397,8 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* Nieuws */}
-      <section className="py-24 bg-[#f8f8f8]">
+      <section className="relative py-24 bg-[#f8f8f8] overflow-hidden">
+        <BgImage src={bladBg} opacity={0.08} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-12">
             <div>
@@ -420,8 +428,8 @@ function HomePage({ go }: { go: (p: Page) => void }) {
       </section>
 
       {/* CTA begeleider */}
-      <section className="py-24 bg-[#1A368D] text-white relative overflow-hidden">
-        <img src={unsplash("1529156069898-49953e39b3ac", 1400, 500)} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
+      <section className="relative py-24 bg-[#1A368D] text-white overflow-hidden">
+        <BgImage src={steenBg} opacity={0.1} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-10">
           <div>
             <div className="text-[#FFFF00] font-bold text-sm mb-2 uppercase tracking-wider">🌟 Vrijwilliger worden</div>
@@ -482,9 +490,7 @@ function OverOnsPage() {
   return (
     <div>
       <section className="pt-32 pb-20 bg-[#1A368D] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img src={unsplash("1533577716844-fd82a37fe68a", 1400, 500)} alt="" className="w-full h-full object-cover" />
-        </div>
+        <BgImage src={steenBg} opacity={0.1} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black">Over ons</h1>
           <p className="text-white/65 mt-4 text-xl max-w-2xl">
@@ -661,7 +667,8 @@ function NieuwsPage() {
 function AgendaPage() {
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#31A529] text-white">
+      <section className="pt-32 pb-20 bg-[#31A529] text-white relative overflow-hidden">
+        <BgImage src={aardeBg} opacity={0.1} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black">Agenda</h1>
           <p className="text-white/65 mt-4 text-xl">Alle aankomende activiteiten op een rij</p>
@@ -722,7 +729,8 @@ function AanmeldenPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#FFFF00]">
+      <section className="pt-32 pb-20 bg-[#FFFF00] relative overflow-hidden">
+        <BgImage src={bladBg} opacity={0.1} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black text-[#1a1a1a]">Aanmelden</h1>
           <p className="text-[#1a1a1a]/60 mt-4 text-xl">Word lid van Scouting Nederland</p>
@@ -911,7 +919,7 @@ function SollicitatiePage() {
   return (
     <div>
       <section className="pt-32 pb-20 bg-[#1A368D] text-white relative overflow-hidden">
-        <img src={unsplash("1526976668912-1a811878dd37", 1400, 500)} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
+        <BgImage src={meerBg} opacity={0.1} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="inline-block bg-[#FFFF00] text-[#1a1a1a] font-bold px-4 py-1.5 rounded-full text-xs mb-4 uppercase tracking-wider">
             Vrijwilliger worden
@@ -1149,7 +1157,8 @@ function ContactPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-20 bg-[#1a1a1a] text-white">
+      <section className="pt-32 pb-20 bg-[#1a1a1a] text-white relative overflow-hidden">
+        <BgImage src={houtBg} opacity={0.1} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-black">Contact</h1>
           <p className="text-white/50 mt-4 text-xl">Vragen? Wij helpen je graag verder</p>
